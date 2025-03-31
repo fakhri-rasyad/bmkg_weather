@@ -6,12 +6,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CurrentWeatherCard(weatherImage: "TEST", weatherDesc: "Cerah", weatherTemp: 27),
-          CurrentWeatherTitle(date: "2025-03-31 08:00:00", location: "Sudiang")
-        ],
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CurrentWeatherTitle(date: "2025-03-31 08:00:00", location: "Sudiang"),
+            CurrentWeatherCard(weatherImage: "TEST", weatherDesc: "Cerah", weatherTemp: 27),
+          ],
+        ),
       ),
     );
   }
