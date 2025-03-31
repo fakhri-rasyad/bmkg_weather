@@ -10,11 +10,21 @@ class HomeScreen extends StatelessWidget {
 }
 
 class CurrentWeatherCard extends StatelessWidget {
-  const CurrentWeatherCard({super.key});
+  const CurrentWeatherCard({super.key, required this.weatherImage, required this.weatherDesc, required this.weatherTemp});
+
+  final String weatherImage;
+  final String weatherDesc;
+  final int weatherTemp;
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Column(
+      children: [
+        Text(weatherDesc),
+        Icon(Icons.thunderstorm),
+        Text("$weatherTemp°C")
+      ],
+    );
   }
 }
 
