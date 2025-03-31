@@ -5,7 +5,15 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CurrentWeatherCard(weatherImage: "TEST", weatherDesc: "Cerah", weatherTemp: 27),
+          CurrentWeatherTitle(date: "2025-03-31 08:00:00", location: "Sudiang")
+        ],
+      ),
+    );
   }
 }
 
@@ -21,7 +29,7 @@ class CurrentWeatherCard extends StatelessWidget {
     return Column(
       children: [
         Text(weatherDesc),
-        Icon(Icons.thunderstorm),
+        const Icon(Icons.thunderstorm),
         Text("$weatherTemp°C")
       ],
     );
