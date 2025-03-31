@@ -19,12 +19,14 @@ class CurrentWeatherCard extends StatelessWidget {
 }
 
 class CurrentWeatherTitle extends StatelessWidget {
-  const CurrentWeatherTitle({super.key});
-
+  const CurrentWeatherTitle(
+      {super.key, required this.date, required this.location});
+  final String date;
+  final String location;
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Column(
+      children: [Text(date), Text(location)],
+    );
   }
 }
-
-
