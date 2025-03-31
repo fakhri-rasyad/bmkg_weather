@@ -8,3 +8,13 @@ class HomeScreen extends StatelessWidget {
     return const Placeholder();
   }
 }
+
+class CurrentWeatherCard extends StatelessWidget {
+  const CurrentWeatherCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
+
