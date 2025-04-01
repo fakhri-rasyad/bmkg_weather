@@ -39,11 +39,14 @@ class CurrentWeatherCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const Icon(
+          Icons.thunderstorm,
+          size: 72,
+        ),
         Text(
           weatherDesc,
           style: Theme.of(context).textTheme.labelMedium,
         ),
-        const Icon(Icons.thunderstorm),
         Text(
           "$weatherTemp°C",
           style: Theme.of(context).textTheme.displayLarge,
