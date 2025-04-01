@@ -10,8 +10,13 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            CurrentWeatherTitle(date: "2025-03-31 08:00:00", location: "Sudiang"),
-            CurrentWeatherCard(weatherImage: "TEST", weatherDesc: "Cerah", weatherTemp: 27),
+            CurrentWeatherTitle(
+                date: "2025-03-31 08:00:00", location: "Sudiang"),
+            SizedBox(
+              height: 16,
+            ),
+            CurrentWeatherCard(
+                weatherImage: "TEST", weatherDesc: "Cerah", weatherTemp: 27),
           ],
         ),
       ),
@@ -20,7 +25,11 @@ class HomeScreen extends StatelessWidget {
 }
 
 class CurrentWeatherCard extends StatelessWidget {
-  const CurrentWeatherCard({super.key, required this.weatherImage, required this.weatherDesc, required this.weatherTemp});
+  const CurrentWeatherCard(
+      {super.key,
+      required this.weatherImage,
+      required this.weatherDesc,
+      required this.weatherTemp});
 
   final String weatherImage;
   final String weatherDesc;
@@ -30,9 +39,15 @@ class CurrentWeatherCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(weatherDesc),
+        Text(
+          weatherDesc,
+          style: Theme.of(context).textTheme.labelMedium,
+        ),
         const Icon(Icons.thunderstorm),
-        Text("$weatherTemp°C")
+        Text(
+          "$weatherTemp°C",
+          style: Theme.of(context).textTheme.displayLarge,
+        )
       ],
     );
   }
@@ -46,7 +61,16 @@ class CurrentWeatherTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [Text(date), Text(location)],
+      children: [
+        Text(
+          date,
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+        Text(
+          location,
+          style: Theme.of(context).textTheme.headlineLarge,
+        )
+      ],
     );
   }
 }
