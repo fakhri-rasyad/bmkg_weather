@@ -16,7 +16,15 @@ class HomeScreen extends StatelessWidget {
               height: 16,
             ),
             CurrentWeatherCard(
-                weatherImage: "TEST", weatherDesc: "Cerah", weatherTemp: 27),
+              weatherImage: "TEST",
+              weatherDesc: "Cerah",
+              weatherTemp: 27,
+              currentWeather: true,
+            ),
+            SizedBox(
+              height: 100,
+              child: WeatherInfoCards(),
+            )
           ],
         ),
       ),
@@ -29,29 +37,37 @@ class CurrentWeatherCard extends StatelessWidget {
       {super.key,
       required this.weatherImage,
       required this.weatherDesc,
-      required this.weatherTemp});
+      required this.weatherTemp,
+      required this.currentWeather});
 
   final String weatherImage;
   final String weatherDesc;
   final int weatherTemp;
+  final bool currentWeather;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Icon(
-          Icons.thunderstorm,
-          size: 72,
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.thunderstorm,
+              size: currentWeather ? 72 : 24,
+            ),
+            Text(
+              weatherDesc,
+              style: Theme.of(context).textTheme.labelMedium,
+            ),
+            Text(
+              "$weatherTemp°C",
+              style: currentWeather ? Theme.of(context).textTheme.headlineMedium : Theme.of(context).textTheme.titleMedium,
+            )
+          ],
         ),
-        Text(
-          weatherDesc,
-          style: Theme.of(context).textTheme.labelMedium,
-        ),
-        Text(
-          "$weatherTemp°C",
-          style: Theme.of(context).textTheme.displayLarge,
-        )
-      ],
+      ),
     );
   }
 }
@@ -67,13 +83,32 @@ class CurrentWeatherTitle extends StatelessWidget {
       children: [
         Text(
           date,
-          style: Theme.of(context).textTheme.headlineMedium,
+          style: Theme.of(context).textTheme.headlineSmall,
         ),
         Text(
           location,
-          style: Theme.of(context).textTheme.headlineLarge,
+          style: Theme.of(context).textTheme.headlineSmall,
         )
       ],
     );
+  }
+}
+
+class WeatherInfoCards extends StatelessWidget {
+  const WeatherInfoCards({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Flexible(
+        fit: FlexFit.loose,
+        child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: 7,
+            itemBuilder: (context, index) => const CurrentWeatherCard(
+                  weatherImage: "TEST",
+                  weatherDesc: "Cerah",
+                  weatherTemp: 27,
+                  currentWeather: false,
+                )));
   }
 }
