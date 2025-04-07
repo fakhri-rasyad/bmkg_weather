@@ -21,10 +21,7 @@ class HomeScreen extends StatelessWidget {
               weatherTemp: 27,
               currentWeather: true,
             ),
-            SizedBox(
-              height: 100,
-              child: WeatherInfoCards(),
-            )
+            WeatherInfoCards(),
           ],
         ),
       ),
@@ -63,7 +60,9 @@ class CurrentWeatherCard extends StatelessWidget {
             ),
             Text(
               "$weatherTemp°C",
-              style: currentWeather ? Theme.of(context).textTheme.headlineMedium : Theme.of(context).textTheme.titleMedium,
+              style: currentWeather
+                  ? Theme.of(context).textTheme.headlineMedium
+                  : Theme.of(context).textTheme.titleMedium,
             )
           ],
         ),
@@ -99,16 +98,17 @@ class WeatherInfoCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-        fit: FlexFit.loose,
-        child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 7,
-            itemBuilder: (context, index) => const CurrentWeatherCard(
-                  weatherImage: "TEST",
-                  weatherDesc: "Cerah",
-                  weatherTemp: 27,
-                  currentWeather: false,
-                )));
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.15,
+      child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: 7,
+          itemBuilder: (context, index) => const CurrentWeatherCard(
+                weatherImage: "TEST",
+                weatherDesc: "Cerah",
+                weatherTemp: 27,
+                currentWeather: false,
+              )),
+    );
   }
 }
