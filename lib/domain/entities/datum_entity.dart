@@ -1,11 +1,10 @@
+import 'package:bmkg_weather/domain/entities/cuaca_entity.dart';
+import 'package:bmkg_weather/domain/entities/lokasi_entity.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../data/model/cuaca.dart';
-import '../../data/model/lokasi.dart';
-
 class DatumEntity extends Equatable {
-  final Lokasi lokasi;
-  final List<List<Cuaca>> cuaca;
+  final LokasiEntity lokasi;
+  final List<List<CuacaEntity>> cuaca;
 
   const DatumEntity({
     required this.lokasi,
